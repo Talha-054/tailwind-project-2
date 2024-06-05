@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/1623055e07.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="h-screen w-screen m-0 p-0">
+    <div class=" bg-orange-400  h-[10vh]  relative flex ">
+        <div id="logo-container" class="h-full w-2/6">
+            <div id="log" class="h-full p-2 ">
+                <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/shops%2Fdemo.reactors.dev%2Flogo120xauto?alt=media&token=ccdcb486-205e-454d-8094-41207efaec4f.png" alt="logo" class="h-full min-w-[58px]">
+            </div>
+        </div>
+
+        <div class="flex p-4 justify-between items-center overflow-auto bg-orange-400 grow relative" id="option-container">
+            <ul class=" flex items-center font-semibold justify-end space-x-9 grow ">
+                <li class="h-full dark:text-white hover:cursor-pointer duration-100  hover:scale-110 py-2 px-2 flex items-center relative"><i class="fa-solid fa-magnifying-glass"></i></li>
+                <li class="h-full dark:text-white duration-100 hover:cursor-pointer hover:scale-105 py-2 px-1  flex items-center relative"><span class="text-xl mx-2"><i class="fa-solid fa-bag-shopping"></i></span>orders</li>
+                <li class="h-full dark:text-white duration-100 hover:cursor-pointer hover:scale-105 py-2 px-1  flex items-center relative"><span class="mx-2 text-lg"><i class="fa-solid fa-key"></i></span>Login</li>
+                <li class="h-full dark:text-white duration-100 hover:cursor-pointer hover:scale-105 py-2 px-1  flex items-center relative"><span class="mx-2 text-lg"><i class="fa-solid fa-user-plus"></i></span>register</li>
+                <li class="h-full dark:text-white duration-100 hover:cursor-pointer hover:scale-105 py-2 px-1  flex items-center relative"><span class="mx-2 text-lg"><i class="fa-solid fa-circle-exclamation"></i></span>contact</li>
+                <li class="h-full dark:text-white duration-100 hover:cursor-pointer hover:scale-105 py-2 px-1  flex items-center relative"><span class="mx-2 text-lg"><i class="fa-solid fa-globe"></i></span>EN</li>
+                <li class="h-full dark:text-white duration-100 hover:cursor-pointer hover:scale-110 py-2 px-3 flex items-center relative"><span class="text-lg"><i class="fa-solid fa-bars"></i></span></li>
+                <li class="h-full dark:text-white duration-100 hover:cursor-pointer hover:scale-110 py-2 px-2 pr-6 flex items-center relative"><span class="text-lg"><i class="fa-solid fa-file-signature"></i></span></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="order-info-container hidden md:block fixed h-[90vh] flex flex-col justify-between  w-2/6  top-[10vh] right-0 ">
+
+
+        <div class="border-2 p-2 shadow-sm h-[70vh] lg:h-[80vh] flex flex-col justify-evenly items-center" id="container-1 ">
+            <div id="heading" class="flex justify-center my-8"><p class="text-xl text-[#808080]">Your Order</p></div>
+
+            <div id="items-info" class="my-2 flex flex-col justify-center items-center">
+                <span class="text-[#808080] text-4xl"><i class="fa-solid fa-cart-shopping"></i></span>
+                <p class="text-sm text-[#808080]">No items added!</p>
+            </div>
+
+            <div id="items-price" class="my-4 flex justify-end relative" >
+                <div class="w-1/2 flex justify-between">
+                    <div id="total" class="flex flex-col text-[#808080]">
+                        <p>Sub Total</p>
+                        <p>Grand Total</p>
+                    </div>
+
+                    <div id="price" class="flex flex-col mx-4 text-[#808080]">
+                        <p>0.0 pkr</p>
+                        <p>0.0 pkr</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="delivery-pickup" class="my-6 flex gap-3 lg:gap-6">
+                <button class="p-2 px-2 lg:px-8 lg:p-4 bg-red-300 rounded-md hover:bg-red-400 duration-100 text-black/90"><span class="text-md text-black/60 px-2"><i class="fa-solid fa-truck"></i></span>Delivery</button>
+                <button class="p-2 px-3 lg:px-12 lg:p-4 bg-red-300 rounded-md hover:bg-red-400 duration-100 text-black/90"><span class="text-lg text-black/60 px-2"><i class="fa-solid fa-person-dress"></i></span>Pickup</button>
+            </div>
+
+            <div id="delivery-area" class="flex justify-center items-center flex-col text-[#808080]">
+                <p class="text-lg">Please select delivery area to proceed</p>
+            </div>
+
+            <div id="select-area-button" class="flex justify-center mb-10 my-2">
+                <button class="bg-none text-[#C40C0C] font-semibold p-1 px-2 border-[1px] border-[#C40C0C]/50 hover:border-[#C40C0C]/100 rounded-md duration-100">Select Area</button>
+            </div>
+        </div>
+
+
+        <div id="order-info-container-bottom" class="h-[10%] bg-[#E8EFCF]" ></div>
+    </div>
+
+
+
+    <div id="main-area-container" class="md:left-0 w-[100vw] md:w-4/6 bg-red-100 h-[90vh] relative  flex flex-col overflow-auto">
+        <div id="hero-section" class="flex">
+            <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/shops%2Fdemo.orionid.de%2FBanner?alt=media&token=9f00b38b-4b72-4e76-a9de-359ea304f8b8.png" alt="">
+        </div>
+
+        <div class=" mb-6  p-4 sticky top-0 bg-white  shadow-lg flex justify-center items-center" id="menu-card">
+            <ul class="w-full flex justify-evenly items-center overflow-auto  ">
+                <li class=" px-2 text-lg hover:cursor-pointer"> Pizza</li>
+                <li class=" px-2 text-lg hover:cursor-pointer"> Mittangsangebote</li>
+                <li class=" px-2 text-lg hover:cursor-pointer"> Party Pizza</li>
+                <li class=" px-2 text-lg hover:cursor-pointer"> Beilagen</li>
+                <li class=" px-2 text-lg hover:cursor-pointer"> Getranke</li>
+                <li class=" px-2 text-lg hover:cursor-pointer"> Motagangbote</li>
+            </ul>
+        </div>
+
+        <div id="best-seller" class="flex bd-white my-4 justify-center bg-white py-6">
+            <p class="text-xl text-orange-500 font-bold">OUR BEST SELLER</p>
+        </div>
+
+
+        <div id="pizza-menu-items" class="flex justify-center flex-wrap gap-6 p-20">
+
+            <div id="pizza-card" class="min-w-[350px] MAX bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">1</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class=" max-w-[350px]">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="pizza-card" class="min-w-[350px] bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">2</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class="max-w-[350px]">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="pizza-card" class="min-w-[350px] bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">3</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class="max-w-[350px] ">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="pizza-card" class="min-w-[350px] bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">4</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class="max-w-[350px]">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="pizza-card" class="min-w-[350px] bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">5</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class="max-w-[350px]">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="pizza-card" class="min-w-[350px] bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">6</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class="max-w-[350px]">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="pizza-card" class="min-w-[350px] bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">7</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class="max-w-[350px]">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pizza-card" class="min-w-[350px] bg-white">
+
+                <div id="1st-compartment" class="flex justify-center p-2 items-center">
+                    <div id="item-no" class="rounded-full flex justify-center items-center md:h-7 md:w-7 h-4 w-4 bg-orange-500 text-sm font-semibold">8</div>
+                    <div id="pizza-name" class="px-2 flex justify-center items-center font-bold md:text-md text-sm">GrundPizza</div>
+                    <div id="feedback-area" class="flex justify-end items-center flex-1 space-x-4 px-2">
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-regular fa-heart"></i></span>
+                        <span class="hover:cursor-pointer hover:text-black/70 "><i class="fa-solid fa-circle-exclamation"></i></span>
+                    </div>
+                </div>
+
+                <div id="2nd-compartent">
+                    <p class="text-xm text-black/70 flex justify-center items-center mb-1">Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                <div id="3rd-compartment" class=" flex justify-center  mb-4">
+                    <div id="img" class="max-w-[350px]">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/react-pizza-shared.appspot.com/o/demo.reactors.dev%2Fitems%2FGrundpizza1708776908272?alt=media&token=b66d4e61-ece0-4121-a633-43e4926f7bd0" alt="pizza image">
+                    </div>
+                </div>
+
+                <div class="p-4 flex justify-evenly items-center" id="4th-compartment">
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-red-500 font-semibold text-sm text-black/70">Small</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Medium</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Large</p>
+                    </div>
+                    <div id="sm" class="p-1 flex flex-col justify-center items-center border-[1px] border-black/20 px-5 hover:border-black/40 hover:cursor-pointer">
+                        <p class="text-sm text-red-500 font-semibold text-black/70">Price <i class="fa-solid fa-euro-sign"></i></p>
+                        <p class="text-sm text-red-500 font-semibold text-black/70">X large</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
